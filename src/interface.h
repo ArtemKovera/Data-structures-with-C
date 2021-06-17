@@ -1,22 +1,26 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
-int linkedListInterface();
+int linkedListInterface(void);
 
-int doubleLinkedListInterface();
+int doublyLinkedListInterface(void);
 
-int circularLinkedListInterface();
+int circularLinkedListInterface(void);
 
-int stackInterface();
+int stackInterface(void);
 
-int queueInterface();
+int queueInterface(void);
 
-int setInterface();
+int setInterface(void);
 
-int chainedHashTableInterface();
+int chainedHashTableInterface(void);
 
-int binaryTreeInterface();
+int binaryTreeInterface(void);
 
-int priorityQueueInterface();
+int priorityQueueInterface(void);
+
+int interfaceMain(void);
+
+void quitContinue(void);
 
 #endif
