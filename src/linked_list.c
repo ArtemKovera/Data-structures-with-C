@@ -50,7 +50,7 @@ int insertHead(List* list, const char* str, size_t strSize)
         {
             node->data[i] = str[i];
         }
-        node->data[strSize] = '\0'; // the string in the node always ends with '\0' 
+        node->data[strSize-1] = '\0'; // the string in the node always ends with '\0' 
     }
     else // if node->data==NULL
     {
@@ -149,9 +149,9 @@ int removeList(List* list)
         tmp1 = tmp1->next;
         free(tmp2->data);
         free(tmp2);
-        tmp2->data = NULL;
-        tmp2->next = NULL;
-        tmp2 = NULL;
+        //tmp2->data = NULL;
+        //tmp2->next = NULL;
+        //tmp2 = NULL;
     }
 
     list->head = NULL;
