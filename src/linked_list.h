@@ -20,15 +20,15 @@ typedef struct list_
 } List;
 
 //size of a single Node
-const size_t NODE_SIZE = sizeof(Node); 
+//const size_t NODE_SIZE = sizeof(Node); 
 
 //initialize an empty linked list
 //returns pointer to the list
 List* init(void);
 
-//to remove all nodes
+//to remove a linked list
 //returns 0 if the call is successful
-int removeNodes(List* list);
+int removeList(List* list);
 
 //returns the size of the linked list
 size_t size(const List* list);
@@ -59,8 +59,12 @@ int removeNodeAfterAddress(List* list, Node* address);
 int removeHead(List* list);
 
 //traverses the list
-//prints data components to the console
+//prints element indexies, data components, and element aaresses to the console
 void traverse(const List* list);
+
+//traverses the list
+//prints data components to the console
+void traverseData(const List* list);
 
 //returns the data of a particular list element
 //returns NULL if the call is not successful 
@@ -69,5 +73,8 @@ char* data(const List* list, const Node* node);
 //returns the data of a particular list element given the index of this element as the second parameter
 //returns NULL if the call is not successful 
 char* dataIndex(const List* list, const size_t index);
+
+//returns the next node in the list
+Node* nextNode(Node* node);
 
 #endif
