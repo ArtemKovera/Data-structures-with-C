@@ -21,7 +21,7 @@ size_t size(const List* list)
 
 int insertHead(List* list, const char* str, size_t strSize)
 {
-    Node* node = (Node* ) malloc(NODE_SIZE);
+    Node* node = (Node* ) malloc(sizeof(Node));
     
     if(node)
     {
@@ -62,7 +62,7 @@ int insertHead(List* list, const char* str, size_t strSize)
 
 int insertNext(List* list, Node* node, const char* str, size_t strSize)
 {
-    Node* newNode = (Node*) malloc(NODE_SIZE);
+    Node* newNode = (Node*) malloc(sizeof(Node));
     
     if(newNode)
     {
@@ -127,10 +127,18 @@ int insertIndex(List* list, size_t index, const char* str, size_t strSize)
     
 }
 
-int remove(List* list)
+int removeList(List* list)
 {
     if(list->size==0)
+    {
+        list->head = NULL;
+        list->tail = NULL;
+        list->size = 0;
+        free(list);
+        list = NULL;
         return 0;
+    }
+        
     
     Node* tmp1 = list->head;
     Node* tmp2;
@@ -150,6 +158,7 @@ int remove(List* list)
     list->tail = NULL;
     list->size = 0;
     free(list);
+    list = NULL;
 
     return 0;
 }
@@ -219,9 +228,21 @@ void traverse(const List* list)
 
     while(tmp)
     {   
-        printf("Element - %zu)\n %s \n Address - %p", count, tmp->data, tmp);
+        printf("Element - %zu)\n%s \nAddress - %p\n", count, tmp->data, tmp);
         tmp = tmp->next;
     }
+}
+
+void traverseData(const List* list)
+{
+    Node* tmp = list->head;
+    size_t count = 0;
+
+    while(tmp)
+    {   
+        printf("%s\n", tmp->data);
+        tmp = tmp->next;
+    }    
 }
 
 char* data(const List* list, const Node* node)
@@ -248,4 +269,14 @@ char* dataIndex(const List* list, const size_t index)
     }
 
     return tmp->data;
+}
+
+Node* nextNode(Node* node)
+{
+    if(node)
+    {
+        return node->next;
+    }
+
+    return NULL;
 }
