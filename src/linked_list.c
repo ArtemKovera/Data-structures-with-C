@@ -21,7 +21,7 @@ size_t size(const List* list)
 
 int insertHead(List* list, const char* str, size_t strSize)
 {
-    Node* node = (Node* ) malloc(sizeof(Node));
+    Node* node = (Node* ) malloc(NODE_SIZE);
     
     if(node)
     {
@@ -62,7 +62,10 @@ int insertHead(List* list, const char* str, size_t strSize)
 
 int insertNext(List* list, Node* node, const char* str, size_t strSize)
 {
-    Node* newNode = (Node*) malloc(sizeof(Node));
+    if(list->size==0)
+        return -3;
+
+    Node* newNode = (Node*) malloc(NODE_SIZE);
     
     if(newNode)
     {
@@ -70,7 +73,7 @@ int insertNext(List* list, Node* node, const char* str, size_t strSize)
         node->next=newNode;
         newNode->next = priviousNodeNext;
 
-        if(list->size==1 || priviousNodeNext->next==NULL)
+        if(list->size==1 || node==list->tail)
         {
             list->tail = newNode;
         }
@@ -91,7 +94,7 @@ int insertNext(List* list, Node* node, const char* str, size_t strSize)
             newNode->data[i] = str[i];
         }
 
-        newNode->data[strSize] = '\0'; //the string in the node always ends with '\0'
+        newNode->data[strSize-1] = '\0'; //the string in the node always ends with '\0'
     }
     else   // if newNode->data==NULL
     {
@@ -101,16 +104,12 @@ int insertNext(List* list, Node* node, const char* str, size_t strSize)
     return 0;
 }
 
-int insertIndex(List* list, size_t index, const char* str, size_t strSize)
+int insertAfterIndex(List* list, size_t index, const char* str, size_t strSize)
 {
-    if(list->size < index) //if the size of the list is less than index, the element is not allocated
-    //and function returns -3
+    if(list->size == 0 || list->size < index) //if the list is empty or the size of the list is less than index, 
+    //the element is not allocated and the function returns -4
     {
-        return -3;
-    }
-    else if(list->size == 0) //if the size of the list is 0, insertHead function is called
-    {
-        return insertHead(list, str, strSize);
+        return -4;
     }
     else          
     {
@@ -149,9 +148,7 @@ int removeList(List* list)
         tmp1 = tmp1->next;
         free(tmp2->data);
         free(tmp2);
-        //tmp2->data = NULL;
-        //tmp2->next = NULL;
-        //tmp2 = NULL;
+        tmp2 = NULL;
     }
 
     list->head = NULL;
@@ -168,10 +165,14 @@ int removeNodeAfterAddress (List* list, Node* address)
     if(list->size==0)
         return -1;
 
-    if(address->next==NULL)
+    if(!address)
         return -2;
 
+    if(address->next==NULL)
+        return -3;
+
     Node* tmp = address->next;
+    
     free(tmp->data);
     tmp->data = NULL;
     address->next = tmp->next;
@@ -228,19 +229,19 @@ void traverse(const List* list)
 
     while(tmp)
     {   
-        printf("Element - %zu)\n%s \nAddress - %p\n", count, tmp->data, tmp);
+        printf("Element - %zu\n%s \nAddress - %p\n------------------------ \n", count, tmp->data, tmp);
         tmp = tmp->next;
+        count++;
     }
 }
 
 void traverseData(const List* list)
 {
     Node* tmp = list->head;
-    size_t count = 0;
 
     while(tmp)
     {   
-        printf("%s\n", tmp->data);
+        printf("%s\n------------------------ \n", tmp->data);
         tmp = tmp->next;
     }    
 }
@@ -253,7 +254,7 @@ char* data(const List* list, const Node* node)
     return node->data;
 }
 
-char* dataIndex(const List* list, const size_t index)
+char* dataAtIndex(const List* list, const size_t index)
 {
     if(list->size==0 || index>list->size)
         return NULL;
@@ -277,6 +278,23 @@ Node* nextNode(Node* node)
     {
         return node->next;
     }
+    return NULL;
+}
 
+Node* getHead(List* list)
+{   
+    if(list)
+    {
+        return list->head;
+    }
+    return NULL;
+}
+
+Node* getTail(List* list)
+{
+    if(list)
+    {
+        return list->tail;
+    }
     return NULL;
 }
