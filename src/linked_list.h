@@ -3,6 +3,8 @@
 
 #include<stdio.h>
 
+#define NODE_SIZE sizeof(Node)
+
 //structure for list elements
 typedef struct Node_
 {
@@ -40,17 +42,19 @@ int insertHead(List* list, const char* str, size_t strSize);
 
 //inserts a new element after the element in the second parameter
 //returns 0 if the call is successful
-//returns -1 or -2 otherwise
+//returns -1, -2, or -3 otherwise
+//time complexity for this function is 1
 int insertNext(List* list, Node* node, const char* str, size_t strSize);
 
 //inserts a new element with a specific index 
 //returns 0 if the call is successful
-//returns -1, -2, or -3 otherwise
-int insertIndex(List* list, size_t index, const char* str, size_t strSize);
+//returns -1, -2, -3, or -4 otherwise
+//time complexity for this function is N
+int insertAfterIndex(List* list, size_t index, const char* str, size_t strSize);
 
 //removes the next node from the list given a node address as the second parameter
 //returns 0 if the call is successful
-//returns -1 or -2 otherwise
+//returns -1, -2, or -3 otherwise
 int removeNodeAfterAddress(List* list, Node* address);
 
 //removes head from the list
@@ -59,7 +63,7 @@ int removeNodeAfterAddress(List* list, Node* address);
 int removeHead(List* list);
 
 //traverses the list
-//prints element indexies, data components, and element aaresses to the console
+//prints element indexies, data components, and element addresses to the console
 void traverse(const List* list);
 
 //traverses the list
@@ -72,9 +76,15 @@ char* data(const List* list, const Node* node);
 
 //returns the data of a particular list element given the index of this element as the second parameter
 //returns NULL if the call is not successful 
-char* dataIndex(const List* list, const size_t index);
+char* dataAtIndex(const List* list, const size_t index);
 
-//returns the next node in the list
+//returns the address of the next node in the list
 Node* nextNode(Node* node);
+
+//returns the address of the head in the list
+Node* getHead(List* list);
+
+//returns the address of the tail in the list
+Node* getTail(List* list);
 
 #endif
