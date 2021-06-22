@@ -2,9 +2,24 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include<stdlib.h>
+#include "linked_list.h"
 
+//returns 0 if call is successful 
+//returns -1 otherwise
 int linkedListInterface(void)
-{
+{   
+    List* list = init();
+    puts("An empty linked list has been created");
+    
+    int removeStatus = removeList(list);
+    if(!removeStatus)
+        puts("Your linked list has been removed");
+    else
+    {
+        puts("Problems with removing the list");
+        return -1;
+    }
+    
     return 0;
 }
 
@@ -50,12 +65,14 @@ int priorityQueueInterface(void)
 
 int interfaceMain(void)
 {
-    char choice = 'a';
-    bool flag = true; 
+    char choice  = 'a';
+    bool flag    = true; 
+    int  status  = 0;
     
     while (flag)
     {
-        puts("Please choose a data structure: \n"
+        puts("\n----------------------------------\n"
+             "Please choose a data structure: \n"
              "To choose Linked List          - press 'A' \n"
              "To choose Double Linked List   - press 'B' \n"
              "To choose Circular Linked List - press 'C' \n"
@@ -72,10 +89,18 @@ int interfaceMain(void)
         switch(choice)
         {
             case 'A':
-                puts("You chose a Linked List");
-                flag = false;
-                linkedListInterface();
-                break;
+                puts("\nYou chose a Linked List");
+                status = linkedListInterface();
+                if(!status)
+                {   
+                    quitContinue();
+                    break;
+                }
+                else
+                {
+                    exit(-1);
+                }
+
             case 'B':
                 puts("You chose a Doubly Linked List");
                 flag = false;
@@ -129,25 +154,31 @@ int interfaceMain(void)
 
 void quitContinue (void)
 {
-    char choice = 'a';
-
     while(true)
     {
-        puts("Do you want to continue?\n"
-             "To continue         - press 'Y'\n"
-             "To quit the program - press 'N'");
+        puts ("To continue         - press 'Y'\n"
+             "To quit the program - press 'Q'");
         
-        choice = getchar();
-
-        switch(choice)
+        flushInput();
+        char choice2 = getchar();
+        flushInput();
+        switch(choice2)
         {
             case 'Y':
                 return;
-            case 'N':
+                break;
+            case 'Q':
                 exit(0);
             default:
-                puts("\nYou've entered an inappropriate character \n"
+                puts("You've entered an inappropriate character \n"
                     "Please make your choice again");          
-        }     
+        }
+
     }
+}
+
+void flushInput(void)
+{
+    int ch;
+    while ((ch = getchar()) != '\n' && ch != EOF);
 }
