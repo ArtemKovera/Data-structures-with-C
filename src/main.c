@@ -1,9 +1,10 @@
 #include<stdio.h>
+#include"interface.h"
 
 int main(int argc, char * argv [])
 {
-    if(argc == 1)
-        puts("Please choose a data structure");
+
+    interfaceMain();
 
     return 0;
 }
