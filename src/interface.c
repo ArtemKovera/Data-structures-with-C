@@ -4,25 +4,6 @@
 #include<stdlib.h>
 #include "linked_list.h"
 
-//returns 0 if call is successful 
-//returns -1 otherwise
-int linkedListInterface(void)
-{   
-    List* list = init();
-    puts("An empty linked list has been created");
-    
-    int removeStatus = removeList(list);
-    if(!removeStatus)
-        puts("Your linked list has been removed");
-    else
-    {
-        puts("Problems with removing the list");
-        return -1;
-    }
-    
-    return 0;
-}
-
 int doublyLinkedListInterface(void)
 {
     return 0;
@@ -65,7 +46,7 @@ int priorityQueueInterface(void)
 
 int interfaceMain(void)
 {
-    char choice  = 'a';
+    char choice  = 0;
     bool flag    = true; 
     int  status  = 0;
     
@@ -157,11 +138,12 @@ void quitContinue (void)
     while(true)
     {
         puts ("To continue         - press 'Y'\n"
-             "To quit the program - press 'Q'");
+              "To quit the program - press 'Q'");
         
         flushInput();
         char choice2 = getchar();
         flushInput();
+
         switch(choice2)
         {
             case 'Y':
