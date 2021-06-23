@@ -14,7 +14,7 @@ List* init(void)
     return ptr;
 }
 
-size_t size(const List* list)
+size_t getSize(const List* list)
 {
     return list->size;
 }
@@ -49,6 +49,11 @@ int insertHead(List* list, const char* str, size_t strSize)
         for (size_t i = 0; i < strSize-1; i++)
         {
             node->data[i] = str[i];
+            if(str[i] == '\n')
+            {
+                node->data[i] = '\0';
+                break;
+            }
         }
         node->data[strSize-1] = '\0'; // the string in the node always ends with '\0' 
     }
@@ -92,6 +97,12 @@ int insertNext(List* list, Node* node, const char* str, size_t strSize)
         for(size_t i = 0; i < strSize-1; i++)
         {
             newNode->data[i] = str[i];
+            if(str[i] == '\n')
+            {
+                node->data[i] = '\0';
+                break;                 
+            }
+               
         }
 
         newNode->data[strSize-1] = '\0'; //the string in the node always ends with '\0'
@@ -106,8 +117,7 @@ int insertNext(List* list, Node* node, const char* str, size_t strSize)
 
 int insertAfterIndex(List* list, size_t index, const char* str, size_t strSize)
 {
-    if(list->size == 0 || list->size < index) //if the list is empty or the size of the list is less than index, 
-    //the element is not allocated and the function returns -4
+    if(list->size < index+1)
     {
         return -4;
     }
@@ -241,7 +251,7 @@ void traverseData(const List* list)
 
     while(tmp)
     {   
-        printf("%s\n------------------------ \n", tmp->data);
+        printf("%s\n", tmp->data);
         tmp = tmp->next;
     }    
 }

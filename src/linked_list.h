@@ -33,7 +33,7 @@ List* init(void);
 int removeList(List* list);
 
 //returns the size of the linked list
-size_t size(const List* list);
+size_t getSize(const List* list);
 
 //inserts a head element at the very beginning of the list
 //returns 0 if the call is successful
