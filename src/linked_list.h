@@ -87,4 +87,10 @@ Node* getHead(List* list);
 //returns the address of the tail in the list
 Node* getTail(List* list);
 
+//returns the node index where the string is found in the list
+//the list is searched from the head
+//the function stops when first occurrence is found
+//returns -1 if the string is not found
+int findData(List* list, const char* str);
+
 #endif

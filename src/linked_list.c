@@ -2,6 +2,8 @@
 
 #include"linked_list.h"
 #include<stdlib.h>
+#include<stdbool.h>
+
 
 List* init(void)
 {
@@ -266,7 +268,7 @@ char* data(const List* list, const Node* node)
 
 char* dataAtIndex(const List* list, const size_t index)
 {
-    if(list->size==0 || index>list->size)
+    if(list->size == 0 || (index+1) > list->size)
         return NULL;
     
     size_t count = 0;
@@ -307,4 +309,28 @@ Node* getTail(List* list)
         return list->tail;
     }
     return NULL;
+}
+
+int findData(List* list, const char* str)
+{
+    Node* tmp = list->head;
+    size_t i  = 0; 
+    int index = 0;
+
+    while(tmp)
+    {   
+
+        while(str[i] == tmp->data[i])
+            i++;
+        i++;
+
+        if(tmp->data[i] == '\0')
+            return index;
+        
+        i = 0;
+        index++;
+        tmp = tmp->next;
+    }
+
+    return -1;
 }
