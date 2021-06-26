@@ -101,7 +101,7 @@ int insertNext(List* list, Node* node, const char* str, size_t strSize)
             newNode->data[i] = str[i];
             if(str[i] == '\n')
             {
-                node->data[i] = '\0';
+                newNode->data[i] = '\0';
                 break;                 
             }
                
