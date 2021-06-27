@@ -42,12 +42,13 @@ int linkedListInterface(void)
              "To insert a new string at the head of the list ------------------- press 'A' \n"
              "To insert a new string after a given index                         press 'B' \n"
              "To remove the string at the head of the list --------------------- press 'C' \n"
-             "To display all strings in the list                                 press 'D' \n"
-             "To display all strings, node indexes and addresses in the list --- press 'E' \n"
-             "To display the string at a given index                             press 'F' \n"
-             "To find the string in the list ----------------------------------- press 'G' \n"
-             "To display the number of the strings stored in the list            press 'H' \n"
-             "To finish working with your list and clean up all its resources -- press 'Q'");
+             "To remove the string at a given index                              press 'D' \n"
+             "To display all strings in the list ------------------------------- press 'E' \n"
+             "To display all strings, node indexes and addresses in the list     press 'F' \n"
+             "To display the string at a given index --------------------------- press 'G' \n"
+             "To find the string in the list                                     press 'H' \n"
+             "To display the number of the strings stored in the list ---------- press 'I' \n"
+             "To finish working with your list and clean up all its resources    press 'Q'");
         
         choice = getchar();
 
@@ -114,18 +115,41 @@ int linkedListInterface(void)
                     break;
                 }
                 break;
+            
+            case'D':  //To remove the string at a given index 
+                puts("Please, enter the index:");
+                flushInput();
+                scanf("%zu", &index);
+                status = removeNodeAtIndex(list, index);
+                if(status == 0)
+                {
+                    puts("Great the string has been removed");
+                }
+                else if(status == -1)
+                {
+                    puts("Your list is empty. You cannot remove any element from it");
+                }
+                else if(status == -4)
+                {
+                    puts("Error: wrong index. Next time please provide another one.");
+                }
+                else
+                {
+                    puts("Something wrong with this operation happened");
+                }
+                break;
 
-            case'D': //To display all strings in the list
+            case'E': //To display all strings in the list
                 puts("\nStrings in your list: \n");
                 traverseData(list);
                 break;
 
-            case'E': //To display all strings, node indexes and addresses in the list
+            case'F': //To display all strings, node indexes and addresses in the list
                 puts("\nElement indexes, strings, and element addresses in your list:\n");
                 traverse(list);
                 break;
 
-            case'F': //To display the string at a given index 
+            case'G': //To display the string at a given index 
                 while(true)
                 {
                     puts("Please enter the index of the string you want to display");
@@ -143,7 +167,7 @@ int linkedListInterface(void)
                 }
                 break;
 
-            case'G': //To find the string in the list
+            case'H': //To find the string in the list
                 puts("Please enter the string you want to find");
                 printf("(Only first %zu characters will be compared)\n", sizeEntered); 
                 flushInput();
@@ -152,14 +176,14 @@ int linkedListInterface(void)
                 if(status == -1)
                     puts("The string is not in the list");
                 else  
-                    printf("The string is found at %d index\n", status);
+                    printf("The string is found at index %d\n", status);
                 break;
 
-            case'H': //To display the number of the strings stored in the list 
+            case'I': //To display the number of the strings stored in the list 
                 printf("There are %zu strings in the list\n", getSize(list));
                 break;
 
-            case'Q':
+            case'Q': //To finish working with this list and cleaning up all its resources
                 free(bufferString);
                 bufferString = NULL;
                 status = removeList(list);

@@ -202,9 +202,12 @@ int removeNodeAfterAddress (List* list, Node* address)
 
 int removeNodeAtIndex(List* list, size_t index)
 {
-    if(list->size==0 || index > list->size - 1)
+    if(list->size==0)
         return -1;  
     
+    if(index > list->size - 1)
+        return -4;
+
     if(index==0)
         return removeHead(list);
 
