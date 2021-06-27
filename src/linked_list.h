@@ -57,6 +57,11 @@ int insertAfterIndex(List* list, size_t index, const char* str, size_t strSize);
 //returns -1, -2, or -3 otherwise
 int removeNodeAfterAddress(List* list, Node* address);
 
+//removes node at the index specified as the second parameter
+//returns 0 if the call is successful
+//returns -1, -2, or -3 otherwise 
+int removeNodeAtIndex(List* list, size_t index);
+
 //removes head from the list
 //returns 0 if the call is successful
 //returns -1 otherwise
