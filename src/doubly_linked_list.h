@@ -10,7 +10,7 @@ typedef struct NodeDL_
     struct NodeDL_ * previous;
 } NodeDL;
 
-typedef struct dlist_
+typedef struct
 {
     size_t size;
     NodeDL* head;
@@ -21,7 +21,8 @@ typedef struct dlist_
 //returns pointer to the list
 DList* initDL(void);
 
-size_t getSizeDL(const DList list);
+//returns the size of a doubly linked list
+size_t getSizeDL(const DList* list);
 
 //to remove a doubly linked list
 //returns 0 if the call is successful
@@ -29,7 +30,7 @@ int removeDL(DList * list);
 
 //inserts a head element at the very beginning of the doubly linked list
 //returns 0 if the call is successful
-//returns -1 or -2 otherwise
+//returns -3 or -4 otherwise
 int insertHeadDL(DList* list, const char* str, size_t strSize);
 
 //inserts a tail element in a doubly linked list
@@ -39,12 +40,12 @@ int insertTailDL(DList* list, const char* str, size_t strSize);
 
 //inserts node after index
 //returns 0 if the call is successful
-//returns -1 otherwise
+//returns -1, -2, -3 or -4 otherwise
 int insertAfterIndexDL(DList* list, size_t index, const char* str, size_t strSize);
 
 //inserts node before index
 //returns 0 if the call is successful
-//returns -1 otherwise
+//returns -1, -2, -3, or -4 otherwise
 int insertBeforeIndexDL(DList* list, size_t index, const char* str, size_t strSize);
 
 //removes node at index
@@ -69,6 +70,10 @@ void traverseDL(DList* list);
 //traverses the doubly linked list from tail to head
 //prints data components to the console
 void traverseBackwordDL(DList* list);
+
+//traverses the doubly linked list from head to tail
+//prints data components and indexies to the console
+void dataAndIndexies(DList* list);
 
 //returns the pointer to a data of a particular list element given the index of this element as the second parameter
 //returns NULL if the call is not successful 
