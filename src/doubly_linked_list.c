@@ -331,6 +331,238 @@ int insertBeforeIndexDL(DList* list, size_t index, const char* str, size_t strSi
     }    
 }
 
+int removeAtIndexDL(DList* list, size_t index)
+{
+    if(index+1 > list->size)
+        return -1;
+    
+    if(index == 0)
+        return removeHeadDL(list);
+    
+    if(index == list->size-1)
+        return removeTailDL(list);
+    
+    size_t half = list->size/2;
 
+    if(half >= index)
+    {
+        
+        NodeDL * tmp = list->head;
+        size_t count = 0;
+        while(tmp)
+        {
+            if(count == index)
+            {
+                free(tmp->data);
+                tmp->next->previous = tmp->previous;
+                tmp->previous = tmp->next;
+                free(tmp);
+                list->size--;
+                break;
+            }
+            count++;
+            tmp = tmp->next;
+        }
 
+        return 0;
+    }
+    else
+    {
+        NodeDL * tmp = list->tail;
+        size_t count = list->size - 1;
 
+        while(tmp)
+        {
+            
+            if(count == index)
+            {
+                free(tmp->data);
+                tmp->next->previous = tmp->previous;
+                tmp->previous = tmp->next;
+                free(tmp);
+                list->size--;
+                break;
+            }
+
+            count--;
+            tmp = tmp->previous;
+        }
+
+        return 0;
+    }
+}
+
+int removeHeadDL(DList* list)
+{
+    if(list->size == 0)
+        return -1;
+
+    if(list->size == 1)
+    {
+        free(list->head->data);
+        free(list->head);
+        list->tail = NULL;
+        list->head = NULL;
+        list->size = 0;
+        return 0;
+    }
+
+    NodeDL * tmp = list->head;
+    list->head->next->previous = NULL;
+    free(list->head->data);
+    list->head = list->head->next;
+    free(tmp);
+    list->size--;
+    return 0;
+}
+
+int removeTailDL(DList* list)
+{
+    if(list->size == 0)
+        return -1;
+    
+    if(list->size == 1)
+    {
+        free(list->tail->data);
+        free(list->tail);
+        list->tail = NULL;
+        list->head = NULL;
+        list->size = 0;
+        return 0;        
+    }
+
+    NodeDL * tmp = list->tail;
+    list->tail->previous->next = NULL;
+    free(list->tail->data);
+    list->tail = list->tail->previous;
+    free(tmp);
+    list->size--;
+    return 0;    
+}
+
+void traverseDL(DList* list)
+{
+    NodeDL * tmp = list->head;
+
+    while(tmp)
+    {
+        puts(tmp->data);
+        tmp = tmp->next;
+    }
+}
+
+void traverseBackwordDL(DList* list)
+{
+    NodeDL * tmp = list->tail;
+
+    while(tmp)
+    {
+        puts(tmp->data);
+        tmp = tmp->previous;
+    }
+}
+
+void dataAndIndexies(DList* list)
+{
+    NodeDL * tmp = list->head;
+    size_t count = 0;
+
+    while(tmp)
+    {
+        printf("%lu\n", count);
+        puts(tmp->data);
+        puts("\n-------------------\n");
+
+        tmp = tmp->next;
+        count++;
+    }
+}
+
+char* dataAtIndexDL(DList* list, size_t index)
+{
+    if (list->size == 0 || index > list->size-1)
+        return NULL;
+    
+    size_t half = list->size/2;
+
+    if(half >= index)
+    {
+        
+        NodeDL * tmp = list->head;
+        size_t count = 0;
+        while(tmp)
+        {
+            if(count == index)
+            {
+                return tmp->data;
+            }
+            count++;
+            tmp = tmp->next;
+        }
+
+    }
+    else
+    {
+        NodeDL * tmp = list->tail;
+        size_t count = list->size - 1;
+
+        while(tmp)
+        {
+            
+            if(count == index)
+            {
+                return tmp->data;
+            }
+
+            count--;
+            tmp = tmp->previous;
+        }
+
+    }
+}
+
+int findDataFromHeadDL(DList* list, const char* data)
+{
+    NodeDL * tmp = list->head;
+    int index    = 0;
+    size_t i     = 0;
+
+    while(tmp)
+    {   
+        while(data[i] == tmp->data[i])
+            i++;
+        i++;
+
+        if(tmp->data[i] == '\0')
+            return index;
+        
+        i = 0;
+        index++;
+        tmp = tmp->next;
+    }
+
+    return -1;
+}
+
+int findDataFromTailDL(DList* list, const char* data)
+{
+    NodeDL * tmp = list->tail;
+    int index    = list->size - 1;
+    size_t i     = 0;
+
+    while(tmp)
+    {   
+        while(data[i] == tmp->data[i])
+            i++;
+        i++;
+
+        if(tmp->data[i] == '\0')
+            return index;
+        
+        i = 0;
+        index--;
+        tmp = tmp->previous;
+    }
+
+    return -1;
+}
