@@ -54,7 +54,7 @@ int removeDL(DList * list)
     return 0;
 }
 
-int insertHeadDL(DList* list, const char* str, size_t strSize)
+int insertHeadDL(DList* list, const char* str, const size_t strSize)
 {
     NodeDL * node = malloc(sizeof(NodeDL));
 
@@ -105,7 +105,7 @@ int insertHeadDL(DList* list, const char* str, size_t strSize)
     return 0;
 }
 
-int insertTailDL(DList* list, const char* str, size_t strSize)
+int insertTailDL(DList* list, const char* str, const size_t strSize)
 {
     NodeDL * node = malloc(sizeof(NodeDL));
 
@@ -156,7 +156,7 @@ int insertTailDL(DList* list, const char* str, size_t strSize)
     return 0;       
 }
 
-int insertAfterIndexDL(DList* list, size_t index, const char* str, size_t strSize)
+int insertAfterIndexDL(DList* list, const size_t index, const char* str, const size_t strSize)
 {
     if(list->size == 0)
         return -1;
@@ -246,7 +246,7 @@ int insertAfterIndexDL(DList* list, size_t index, const char* str, size_t strSiz
         
 }
 
-int insertBeforeIndexDL(DList* list, size_t index, const char* str, size_t strSize)
+int insertBeforeIndexDL(DList* list, const size_t index, const char* str, const size_t strSize)
 {
     if(list->size == 0)
         return -1;
@@ -335,7 +335,7 @@ int insertBeforeIndexDL(DList* list, size_t index, const char* str, size_t strSi
     }    
 }
 
-int removeAtIndexDL(DList* list, size_t index)
+int removeAtIndexDL(DList* list, const size_t index)
 {
     if(index+1 > list->size)
         return -1;
@@ -444,7 +444,7 @@ int removeTailDL(DList* list)
     return 0;    
 }
 
-void traverseDL(DList* list)
+void traverseDL(const DList* list)
 {
     NodeDL * tmp = list->head;
 
@@ -455,7 +455,7 @@ void traverseDL(DList* list)
     }
 }
 
-void traverseBackwordDL(DList* list)
+void traverseBackwordDL(const DList* list)
 {
     NodeDL * tmp = list->tail;
 
@@ -466,7 +466,7 @@ void traverseBackwordDL(DList* list)
     }
 }
 
-void dataAndIndexies(DList* list)
+void dataAndIndexies(const DList* list)
 {
     NodeDL * tmp = list->head;
     size_t count = 0;
@@ -482,7 +482,7 @@ void dataAndIndexies(DList* list)
     }
 }
 
-char* dataAtIndexDL(DList* list, size_t index)
+char* dataAtIndexDL(const DList* list, const size_t index)
 {
     if (list->size == 0 || index > list->size-1)
         return NULL;
@@ -525,7 +525,7 @@ char* dataAtIndexDL(DList* list, size_t index)
     }
 }
 
-int findDataFromHeadDL(DList* list, const char* data)
+int findDataFromHeadDL(const DList* list, const char* data)
 {
     NodeDL * tmp = list->head;
     int index    = 0;
@@ -548,7 +548,7 @@ int findDataFromHeadDL(DList* list, const char* data)
     return -1;
 }
 
-int findDataFromTailDL(DList* list, const char* data)
+int findDataFromTailDL(const DList* list, const char* data)
 {
     NodeDL * tmp = list->tail;
     int index    = list->size - 1;
@@ -571,7 +571,7 @@ int findDataFromTailDL(DList* list, const char* data)
     return -1;
 }
 
-int saveToFile(DList* list, const char* file)
+int saveToFile(const DList* list, const char* file)
 {
     FILE * fp = fopen(file, "a");
     

@@ -31,27 +31,27 @@ int removeDL(DList * list);
 //inserts a head element at the very beginning of the doubly linked list
 //returns 0 if the call is successful
 //returns -3 or -4 otherwise
-int insertHeadDL(DList* list, const char* str, size_t strSize);
+int insertHeadDL(DList* list, const char* str, const size_t strSize);
 
 //inserts a tail element in a doubly linked list
 //returns 0 if the call is successful
 //returns -1 or -2 otherwise
-int insertTailDL(DList* list, const char* str, size_t strSize);
+int insertTailDL(DList* list, const char* str, const size_t strSize);
 
 //inserts node after index
 //returns 0 if the call is successful
 //returns -1, -2, -3 or -4 otherwise
-int insertAfterIndexDL(DList* list, size_t index, const char* str, size_t strSize);
+int insertAfterIndexDL(DList* list, const size_t index, const char* str, const size_t strSize);
 
 //inserts node before index
 //returns 0 if the call is successful
 //returns -1, -2, -3, or -4 otherwise
-int insertBeforeIndexDL(DList* list, size_t index, const char* str, size_t strSize);
+int insertBeforeIndexDL(DList* list, const size_t index, const char* str, const size_t strSize);
 
 //removes node at index
 //returns 0 if the call is successful
 //returns -1 otherwise
-int removeAtIndexDL(DList* list, size_t index);
+int removeAtIndexDL(DList* list, const size_t index);
 
 //removes the head from the doubly linked list
 //returns 0 if the call is successful
@@ -65,35 +65,35 @@ int removeTailDL(DList* list);
 
 //traverses the doubly linked list from head to tail
 //prints data components to the console
-void traverseDL(DList* list);
+void traverseDL(const DList* list);
 
 //traverses the doubly linked list from tail to head
 //prints data components to the console
-void traverseBackwordDL(DList* list);
+void traverseBackwordDL(const DList* list);
 
 //traverses the doubly linked list from head to tail
 //prints data components and indexies to the console
-void dataAndIndexies(DList* list);
+void dataAndIndexies(const DList* list);
 
 //returns the pointer to a data of a particular list element given the index of this element as the second parameter
 //returns NULL if the call is not successful 
-char* dataAtIndexDL(DList* list, size_t index);
+char* dataAtIndexDL(const DList* list, const size_t index);
 
 //returns the node index where the string is found in the list
 //the list is searched from the head
 //the function stops when first occurrence is found
 //returns -1 if the string is not found
-int findDataFromHeadDL(DList* list, const char* data);
+int findDataFromHeadDL(const DList* list, const char* data);
 
 //returns the node index where the string is found in the list
 //the list is searched from the tail
 //the function stops when first occurrence is found
 //returns -1 if the string is not found
-int findDataFromTailDL(DList* list, const char* data);
+int findDataFromTailDL(const DList* list, const char* data);
 
 //saves the content of a doubly linked list to file
 //returns 0 if the call is successful
 //returns -1 otherwise
-int saveToFile(DList* list, const char* file);
+int saveToFile(const DList* list, const char* file);
 
 #endif
