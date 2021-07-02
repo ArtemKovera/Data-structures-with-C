@@ -91,4 +91,9 @@ int findDataFromHeadDL(DList* list, const char* data);
 //returns -1 if the string is not found
 int findDataFromTailDL(DList* list, const char* data);
 
+//saves the content of a doubly linked list to file
+//returns 0 if the call is successful
+//returns -1 otherwise
+int saveToFile(DList* list, const char* file);
+
 #endif

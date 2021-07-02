@@ -566,3 +566,22 @@ int findDataFromTailDL(DList* list, const char* data)
 
     return -1;
 }
+
+int saveToFile(DList* list, const char* file)
+{
+    FILE * fp = fopen(file, "a");
+    
+    if(fp==NULL)
+        return -1;
+
+    NodeDL* tmp = list->head;
+
+    while(tmp)
+    {
+        fprintf(fp, "%s\n", tmp->data);
+        tmp = tmp->next;
+    }
+
+    fclose(fp);
+    return 0;
+}
