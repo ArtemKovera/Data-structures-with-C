@@ -177,6 +177,8 @@ int insertAfterIndexDL(DList* list, const size_t index, const char* str, const s
         return -3;
     }
 
+    node->data = malloc(strSize);
+
     if(node->data)
     {
         for (size_t i = 0; i < strSize-1; i++)
@@ -266,6 +268,8 @@ int insertBeforeIndexDL(DList* list, const size_t index, const char* str, const 
         fprintf(stderr, "Error with allocating memory for a node\n");
         return -3;
     }
+
+    node->data = malloc(strSize);
 
     if(node->data)
     {
