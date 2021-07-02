@@ -63,7 +63,8 @@ int insertHeadDL(DList* list, const char* str, size_t strSize)
         fprintf(stderr, "Error with allocating memory for a head node in a doubly linked list\n");
         return -3;
     }
-
+    
+    NodeDL *tmp = list->head;
     list->head = node;
     node->previous = NULL;
     
@@ -74,7 +75,8 @@ int insertHeadDL(DList* list, const char* str, size_t strSize)
     }
     else
     {
-        node->next = list->head;
+        node->next = tmp;
+        tmp->previous = node;
     }
 
     list->size++;
@@ -112,7 +114,8 @@ int insertTailDL(DList* list, const char* str, size_t strSize)
         fprintf(stderr, "Error with allocating memory for a tail node\n");
         return -3;
     } 
-
+    
+    NodeDL *tmp = list->tail;
     list->tail = node;
     node->next = NULL;
     
@@ -123,7 +126,8 @@ int insertTailDL(DList* list, const char* str, size_t strSize)
     }
     else
     {
-        node->previous = list->tail;
+        node->previous = tmp;
+        tmp->next = node;
     }
 
     list->size++;
