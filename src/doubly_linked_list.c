@@ -363,7 +363,7 @@ int removeAtIndexDL(DList* list, const size_t index)
             {
                 free(tmp->data);
                 tmp->next->previous = tmp->previous;
-                tmp->previous = tmp->next;
+                tmp->previous->next = tmp->next;
                 free(tmp);
                 list->size--;
                 break;
@@ -386,7 +386,7 @@ int removeAtIndexDL(DList* list, const size_t index)
             {
                 free(tmp->data);
                 tmp->next->previous = tmp->previous;
-                tmp->previous = tmp->next;
+                tmp->previous->next = tmp->next;
                 free(tmp);
                 list->size--;
                 break;
