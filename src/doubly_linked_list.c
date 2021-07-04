@@ -341,8 +341,11 @@ int insertBeforeIndexDL(DList* list, const size_t index, const char* str, const 
 
 int removeAtIndexDL(DList* list, const size_t index)
 {
-    if(index+1 > list->size)
+    if(list->size == 0)
         return -1;
+    
+    if(index+1 > list->size)
+        return -2;
     
     if(index == 0)
         return removeHeadDL(list);
@@ -527,6 +530,8 @@ char* dataAtIndexDL(const DList* list, const size_t index)
         }
 
     }
+
+    return NULL;
 }
 
 int findDataFromHeadDL(const DList* list, const char* data)

@@ -35,7 +35,7 @@ int insertHeadDL(DList* list, const char* str, const size_t strSize);
 
 //inserts a tail element in a doubly linked list
 //returns 0 if the call is successful
-//returns -1 or -2 otherwise
+//returns -3 or -4 otherwise
 int insertTailDL(DList* list, const char* str, const size_t strSize);
 
 //inserts node after index
