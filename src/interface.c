@@ -2,12 +2,7 @@
 #include<stdio.h>
 #include<stdbool.h>
 #include<stdlib.h>
-#include "linked_list.h"
 
-int doublyLinkedListInterface(void)
-{
-    return 0;
-}
 
 int circularLinkedListInterface(void)
 {
@@ -162,5 +157,6 @@ void quitContinue (void)
 void flushInput(void)
 {
     int ch;
-    while ((ch = getchar()) != '\n' && ch != EOF);
+    while ((ch = getchar()) != '\n' && ch != EOF)
+        continue;
 }
