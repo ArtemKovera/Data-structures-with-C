@@ -98,4 +98,9 @@ Node* getTail(const List* list);
 //returns -1 if the string is not found
 int findData(const List* list, const char* str);
 
+//saves the content of a linked list to file
+//returns 0 if the call is successful
+//returns -1 otherwise
+int saveToFileLL(const List* list, const char* file);
+
 #endif

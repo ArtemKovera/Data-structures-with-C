@@ -362,3 +362,23 @@ int findData(const List* list, const char* str)
 
     return -1;
 }
+
+int saveToFileLL(const List* list, const char* file)
+{
+    FILE * fp = fopen(file, "a");
+    
+    if(fp==NULL)
+        return -1;
+
+    Node* tmp = list->head;
+
+    while(tmp)
+    {
+        fprintf(fp, "%s\n", tmp->data);
+        tmp = tmp->next;
+    }
+
+    fclose(fp);
+    return 0;    
+}
+
