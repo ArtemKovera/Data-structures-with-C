@@ -79,9 +79,17 @@ int interfaceMain(void)
 
             case 'B':
                 puts("You chose a Doubly Linked List");
-                flag = false;
-                doublyLinkedListInterface();                
-                break;
+                status = doublyLinkedListInterface(); 
+                if(!status)
+                {   
+                    quitContinue();
+                    break;
+                }
+                else
+                {
+                    exit(-1);
+                }                               
+                
             case 'C':
                 puts("You chose a Circular Linked List");
                 flag = false;
