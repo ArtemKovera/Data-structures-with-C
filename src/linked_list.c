@@ -21,7 +21,7 @@ size_t getSize(const List* list)
     return list->size;
 }
 
-int insertHead(List* list, const char* str, size_t strSize)
+int insertHead(List* list, const char* str, const size_t strSize)
 {
     Node* node = (Node* ) malloc(NODE_SIZE);
     
@@ -67,7 +67,7 @@ int insertHead(List* list, const char* str, size_t strSize)
     return 0;
 }
 
-int insertNext(List* list, Node* node, const char* str, size_t strSize)
+int insertNext(List* list, Node* node, const char* str, const size_t strSize)
 {
     if(list->size==0)
         return -3;
@@ -117,7 +117,7 @@ int insertNext(List* list, Node* node, const char* str, size_t strSize)
     return 0;
 }
 
-int insertAfterIndex(List* list, size_t index, const char* str, size_t strSize)
+int insertAfterIndex(List* list, const size_t index, const char* str, const size_t strSize)
 {
     if(list->size < index+1)
     {
@@ -200,7 +200,7 @@ int removeNodeAfterAddress (List* list, Node* address)
     return 0;
 }
 
-int removeNodeAtIndex(List* list, size_t index)
+int removeNodeAtIndex(List* list, const size_t index)
 {
     if(list->size==0)
         return -1;  
@@ -312,7 +312,7 @@ char* dataAtIndex(const List* list, const size_t index)
     return tmp->data;
 }
 
-Node* nextNode(Node* node)
+Node* nextNode(const Node* node)
 {
     if(node)
     {
@@ -321,7 +321,7 @@ Node* nextNode(Node* node)
     return NULL;
 }
 
-Node* getHead(List* list)
+Node* getHead(const List* list)
 {   
     if(list)
     {
@@ -330,7 +330,7 @@ Node* getHead(List* list)
     return NULL;
 }
 
-Node* getTail(List* list)
+Node* getTail(const List* list)
 {
     if(list)
     {
@@ -339,7 +339,7 @@ Node* getTail(List* list)
     return NULL;
 }
 
-int findData(List* list, const char* str)
+int findData(const List* list, const char* str)
 {
     Node* tmp = list->head;
     size_t i  = 0; 
