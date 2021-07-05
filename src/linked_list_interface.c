@@ -49,8 +49,8 @@ int linkedListInterface(void)
              "To display the string at a given index --------------------------- press 'G' \n"
              "To find the string in the list                                     press 'H' \n"
              "To display the number of the strings stored in the list ---------- press 'I' \n"
-             "To save the content of the list to a file ------------------------ press 'S' \n"
-             "To finish working with your list and clean up all its resources    press 'Q'");
+             "To save the content of the list to a file                          press 'S' \n"
+             "To finish working with your list and clean up all its resources -- press 'Q'");
         
         choice = getchar();
 

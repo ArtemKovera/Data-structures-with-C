@@ -54,7 +54,7 @@ int doublyLinkedListInterface(void)
              "To find the string in the list from head to tail                   press 'L' \n"
              "To find the string in the list from tail to head ----------------- press 'M' \n"
              "To display the number of the strings stored in the list            press 'N' \n"
-             "To save the content of the list to a file ------------------------ press 'O' \n"
+             "To save the content of the list to a file ------------------------ press 'S' \n"
              "To finish working with your list and clean up all its resources    press 'Q'");
         
         choice = getchar();
@@ -269,7 +269,7 @@ int doublyLinkedListInterface(void)
                 printf("There are %zu strings in the list\n", getSizeDL(list));
                 break;
             
-            case'O': //To store the content of the list to a file
+            case'S': //To store the content of the list to a file
                 puts("Please enter the file name:");
                 flushInput();
                 fgets(filename, 64, stdin);
