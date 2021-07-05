@@ -15,7 +15,7 @@ int doublyLinkedListInterface(void)
     size_t index          = 0;
     char* bufferString    = NULL;
     char* pointer         = NULL;
-    char filename [64]    = {0};
+    char filename [FILE_NAME_SIZE]    = {0};
     
     DList* list = initDL();
     puts("An empty doubly linked list has been created");
@@ -272,7 +272,7 @@ int doublyLinkedListInterface(void)
             case'S': //To store the content of the list to a file
                 puts("Please enter the file name:");
                 flushInput();
-                fgets(filename, 64, stdin);
+                fgets(filename, FILE_NAME_SIZE, stdin);
                 status = saveToFile(list, filename);
                 if(!status)
                     printf("Great! The content of your list has been saved to the file %s\n", filename);

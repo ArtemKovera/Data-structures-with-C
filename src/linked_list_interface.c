@@ -14,7 +14,7 @@ int linkedListInterface(void)
     size_t size           = 0; 
     size_t index          = 0;
     char* bufferString    = NULL;
-    char filename [64]    = {0};
+    char filename [FILE_NAME_SIZE]    = {0};
 
     
     List* list = init();
@@ -188,7 +188,7 @@ int linkedListInterface(void)
             case'S': //To store the content of the list to a file
                 puts("Please enter the file name:");
                 flushInput();
-                fgets(filename, 64, stdin);
+                fgets(filename, FILE_NAME_SIZE, stdin);
                 status = saveToFileLL(list, filename);
                 if(!status)
                     printf("Great! The content of your list has been saved to the file %s\n", filename);
