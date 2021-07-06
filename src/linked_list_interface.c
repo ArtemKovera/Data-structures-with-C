@@ -14,6 +14,7 @@ int linkedListInterface(void)
     size_t size           = 0; 
     size_t index          = 0;
     char* bufferString    = NULL;
+    char* pointer         = NULL;
     char filename [FILE_NAME_SIZE]    = {0};
 
     
@@ -159,9 +160,9 @@ int linkedListInterface(void)
                     status = scanf("%zu", &index);
                     if(status == 1)
                     {
-                        if(dataAtIndex(list, index))
+                        if((pointer = dataAtIndex(list, index)) != NULL)
                         {
-                            printf("%s\n", dataAtIndex(list, index));
+                            printf("%s\n", pointer);
                         }
                         break;   
                     }
