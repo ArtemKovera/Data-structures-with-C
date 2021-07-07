@@ -4,7 +4,6 @@
 #include<stdlib.h>
 
 
-
 int queueInterface(void)
 {
     return 0;
@@ -42,8 +41,7 @@ int interfaceMain(void)
              "Please choose a data structure: \n"
              "To choose Linked List          - press 'A' \n"
              "To choose Double Linked List   - press 'B' \n"
-             "To choose Circular Linked List - press 'C' \n"
-             "To choose Stack                - press 'D' \n"
+             "To choose Stack                - press 'C' \n"
              "To choose Queue                - press 'E' \n"
              "To choose Set                  - press 'F' \n"
              "To choose Chained Hash Table   - press 'G' \n"
@@ -80,14 +78,8 @@ int interfaceMain(void)
                 {
                     exit(-1);
                 }                               
-                
-            case 'C':
-                puts("You chose a Circular Linked List");
-                flag = false;
-                circularLinkedListInterface();                
-                break;
 
-            case 'D':
+            case 'C':
                 puts("You chose a Stack");
                 status = stackInterface(); 
                 if(!status)
@@ -132,7 +124,7 @@ int interfaceMain(void)
 
             case 'Q':
                 exit(0);
-                
+
             default:
                 puts("\nYou've entered an inappropriate character \n"
                      "Make your choice again");                            
