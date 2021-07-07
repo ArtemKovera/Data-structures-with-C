@@ -4,15 +4,6 @@
 #include<stdlib.h>
 
 
-int circularLinkedListInterface(void)
-{
-    return 0;
-}
-
-int stackInterface(void)
-{
-    return 0;
-}
 
 int queueInterface(void)
 {
@@ -95,38 +86,53 @@ int interfaceMain(void)
                 flag = false;
                 circularLinkedListInterface();                
                 break;
+
             case 'D':
                 puts("You chose a Stack");
-                flag = false;
-                stackInterface();
-                break;
+                status = stackInterface(); 
+                if(!status)
+                {   
+                    quitContinue();
+                    break;
+                }
+                else
+                {
+                    exit(-1);
+                }   
+
             case 'E':
                 puts("You chose a Queue");
                 flag = false;
                 queueInterface();
-                break;        
+                break; 
+
             case 'F':
                 puts("You chose a Set");
                 flag = false;
                 setInterface();
                 break;
+
             case 'G':
                 puts("You chose a Chained Hash Table");
                 flag = false;
                 chainedHashTableInterface();
                 break;
+
             case 'H':
                 puts("You chose a Binary Tree");
                 flag = false;
                 binaryTreeInterface();
                 break;
+
             case 'I':
                 puts("You chose a Priority Queue");
                 flag = false;
                 priorityQueueInterface();
                 break;  
+
             case 'Q':
                 exit(0);
+                
             default:
                 puts("\nYou've entered an inappropriate character \n"
                      "Make your choice again");                            
