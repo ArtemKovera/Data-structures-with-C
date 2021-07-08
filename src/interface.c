@@ -3,12 +3,6 @@
 #include<stdbool.h>
 #include<stdlib.h>
 
-
-int queueInterface(void)
-{
-    return 0;
-}
-
 int setInterface(void)
 {
     return 0;
@@ -42,7 +36,7 @@ int interfaceMain(void)
              "To choose Linked List          - press 'A' \n"
              "To choose Double Linked List   - press 'B' \n"
              "To choose Stack                - press 'C' \n"
-             "To choose Queue                - press 'E' \n"
+             "To choose Queue                - press 'D' \n"
              "To choose Set                  - press 'F' \n"
              "To choose Chained Hash Table   - press 'G' \n"
              "To choose Binary Tree          - press 'H' \n"
@@ -92,11 +86,18 @@ int interfaceMain(void)
                     exit(-1);
                 }   
 
-            case 'E':
+            case 'D':
                 puts("You chose a Queue");
-                flag = false;
-                queueInterface();
-                break; 
+                status = queueInterface(); 
+                if(!status)
+                {   
+                    quitContinue();
+                    break;
+                }
+                else
+                {
+                    exit(-1);
+                }   
 
             case 'F':
                 puts("You chose a Set");
