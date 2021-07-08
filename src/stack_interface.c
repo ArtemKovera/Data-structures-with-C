@@ -13,7 +13,6 @@ int stackInterface(void)
     int status            = 0;
     size_t sizeEntered    = 0;   
     size_t size           = 0; 
-    size_t index          = 0;
     char* bufferString    = NULL;
     char* pointer         = NULL;
     

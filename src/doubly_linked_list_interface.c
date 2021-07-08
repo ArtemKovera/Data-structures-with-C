@@ -175,7 +175,7 @@ int doublyLinkedListInterface(void)
                 status = removeTailDL(list);
                 if(!status)
                 {
-                    puts("The string at the head of the list has been removed");
+                    puts("The string at the tail of the list has been removed");
                     break;
                 }
                 else if(status == -1)
