@@ -4,6 +4,7 @@
 #include<stdio.h>
 
 #define NODE_SIZE sizeof(Node)
+#define SIZE_L(x) (x->size)
 
 //structure for list elements
 typedef struct Node_

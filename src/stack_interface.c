@@ -89,7 +89,7 @@ int stackInterface(void)
                 break;   
 
             case'D': //To display the number of the strings stored in the stack
-                printf("There are %zu strings in the stack\n", getSize(list));
+                printf("There are %zu strings in the stack\n", SIZE_L(list));
                 break;
             
             case'Q': //To finish working with this stack and cleaning up all its resources

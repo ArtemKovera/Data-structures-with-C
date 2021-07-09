@@ -89,7 +89,7 @@ int queueInterface(void)
                 break; 
 
             case'D': //To display the number of the strings stored in the queue
-                printf("There are %zu strings in the queue\n", getSizeDL(list));
+                printf("There are %zu strings in the queue\n", SIZE_DL(list));
                 break;
             
             case'Q': //To finish working with this queue and cleaning up all its resources

@@ -183,7 +183,7 @@ int linkedListInterface(void)
                 break;
 
             case'I': //To display the number of the strings stored in the list 
-                printf("There are %zu strings in the list\n", getSize(list));
+                printf("There are %zu strings in the list\n", SIZE_L(list));
                 break;
             
             case'S': //To store the content of the list to a file

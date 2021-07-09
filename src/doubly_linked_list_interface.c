@@ -266,7 +266,7 @@ int doublyLinkedListInterface(void)
                 break;            
 
             case'N': //To display the number of the strings stored in the list 
-                printf("There are %zu strings in the list\n", getSizeDL(list));
+                printf("There are %zu strings in the list\n", SIZE_DL(list));
                 break;
             
             case'S': //To store the content of the list to a file

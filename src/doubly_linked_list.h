@@ -3,6 +3,8 @@
 
 #include<stdio.h>
 
+#define SIZE_DL(x) (x->size)
+
 typedef struct NodeDL_
 {
     char * data;
