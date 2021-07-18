@@ -349,11 +349,12 @@ int findData(const List* list, const char* str)
     {   
 
         while(str[i] == tmp->data[i])
-            i++;
-        i++;
+        {
+            if(str[i] == '\0')
+                return index;
 
-        if(tmp->data[i] == '\0')
-            return index;
+            i++;
+        }
         
         i = 0;
         index++;
