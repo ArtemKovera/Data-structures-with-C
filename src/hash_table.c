@@ -10,20 +10,24 @@ HashTable* initHT(const size_t numberOfCharacters)
     ht->numberOfElements = numberOfCharacters * 127;
 
     ht->size = 0;
-    ht->array = (List*) calloc(sizeof(List*), ht->numberOfElements);
+    ht->array = (List**) calloc(sizeof(List*), ht->numberOfElements);
       
     return ht;
 }
 
 
-unsigned int hashFunction(const char *str)
+unsigned int hashFunction(const char *str, const size_t strSize)
 {
     unsigned int result = 0;
+    size_t count = 0;
 
-    while(*str != '\0')
+    while(count < strSize)
     {
         result += *str;
         str++;
+
+        if(*str == '\0')
+            break;
     }
 
     return result;
@@ -31,34 +35,41 @@ unsigned int hashFunction(const char *str)
 
 int addStringHT(HashTable *ht, const char *str, const size_t strSize)
 {
-    unsigned int index = hashFunction(str);
+    
+    if(!ht)
+        return -4;
+    
+    unsigned int index = hashFunction(str, strSize);
     int status = 0;
     if(index > ht->numberOfElements)
         return -3;
     
-    List *list = (ht->array)+index;
     
-
-    if(list == NULL)
+    if(ht->array[index] == NULL)
     {
-        list = init();
+        ht->array[index] = init();
     } 
 
 
-    status = insertHead(list, str, strSize);
+    status = insertHead(ht->array[index], str, strSize);
     ht->size++;
+    
+
     return status;
 }
 
-bool findStringHT(const HashTable *ht, const char *str)
+bool findStringHT(const HashTable *ht, const char *str, const size_t strSize)
 {
-    unsigned int index = hashFunction(str);
+    if(!ht)
+        return false;
+    
+    unsigned int index = hashFunction(str, strSize);
     int status = 0;
 
     if(index > ht->numberOfElements)
         return false;
     
-    List *list = (ht->array)+index; 
+    List *list = ht->array[index]; 
 
     if(list == NULL)
     {
@@ -73,15 +84,18 @@ bool findStringHT(const HashTable *ht, const char *str)
     return true;
 }
 
-int removeElement(HashTable *ht, const char *str)
-{
-    unsigned int index = hashFunction(str);
+int removeElementHt(HashTable *ht, const char *str, const size_t strSize)
+{   
+    if(!ht)
+        return -5;
+    
+    unsigned int index = hashFunction(str, strSize);
     int status = 0;
 
     if(index > ht->numberOfElements)
         return -1;    
 
-    List *list = (ht->array)+index; 
+    List *list = ht->array[index]; 
 
     if(list == NULL)
     {
@@ -99,6 +113,9 @@ int removeElement(HashTable *ht, const char *str)
 
 int removeHT(HashTable *ht)
 {
+    if(!ht)
+        return -1;
+    
     if(ht->size == 0)
     {
         free(ht->array);
@@ -108,9 +125,9 @@ int removeHT(HashTable *ht)
         return 0;
     }
 
-    for(size_t count = 0; count < ht->numberOfElements; count++)
+    for(size_t index = 0; index < ht->numberOfElements; index++)
     {
-        List *tmp = (ht->array) + count;
+        List *tmp = ht->array[index];
         
         if(tmp)
             removeList(tmp);
@@ -121,4 +138,9 @@ int removeHT(HashTable *ht)
     free(ht);
     ht = NULL;
     return 0;
+}
+
+size_t getNumberOfElements(const HashTable *ht)
+{
+    return ht->numberOfElements;
 }
