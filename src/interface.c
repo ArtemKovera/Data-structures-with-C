@@ -1,14 +1,9 @@
-#include "interface.h"
+#include"interface.h"
 #include<stdio.h>
 #include<stdbool.h>
 #include<stdlib.h>
 
 int setInterface(void)
-{
-    return 0;
-}
-
-int chainedHashTableInterface(void)
 {
     return 0;
 }
@@ -37,8 +32,7 @@ int interfaceMain(void)
              "To choose Double Linked List   - press 'B' \n"
              "To choose Stack                - press 'C' \n"
              "To choose Queue                - press 'D' \n"
-             "To choose Set                  - press 'F' \n"
-             "To choose Chained Hash Table   - press 'G' \n"
+             "To choose Hash Table           - press 'E' \n"
              "To choose Binary Tree          - press 'H' \n"
              "To choose Priority Queue       - press 'I' \n"
              "To quit the program            - press 'Q'");
@@ -97,19 +91,20 @@ int interfaceMain(void)
                 else
                 {
                     exit(-1);
-                }   
+                }
 
-            case 'F':
-                puts("You chose a Set");
-                flag = false;
-                setInterface();
-                break;
-
-            case 'G':
-                puts("You chose a Chained Hash Table");
-                flag = false;
-                chainedHashTableInterface();
-                break;
+            case 'E':
+                puts("You chose a Hash Table");
+                status = chainedHashTableInterface();
+                if(!status)
+                {   
+                    quitContinue();
+                    break;
+                }
+                else
+                {
+                    exit(-1);
+                }
 
             case 'H':
                 puts("You chose a Binary Tree");
@@ -164,6 +159,11 @@ void quitContinue (void)
 void flushInput(void)
 {
     int ch;
-    while ((ch = getchar()) != '\n' && ch != EOF)
-        continue;
+    while (true)
+    {
+        if(ch == EOF || ch == '\n')
+            return;
+        
+        ch = getchar();
+    }     
 }
