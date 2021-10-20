@@ -3,20 +3,6 @@
 #include<stdbool.h>
 #include<stdlib.h>
 
-int setInterface(void)
-{
-    return 0;
-}
-
-int binaryTreeInterface(void)
-{
-    return 0;
-}
-
-int priorityQueueInterface(void)
-{
-    return 0;
-}
 
 int interfaceMain(void)
 {
@@ -28,14 +14,12 @@ int interfaceMain(void)
     {
         puts("\n----------------------------------\n"
              "Please choose a data structure: \n"
-             "To choose Linked List          - press 'A' \n"
-             "To choose Double Linked List   - press 'B' \n"
-             "To choose Stack                - press 'C' \n"
-             "To choose Queue                - press 'D' \n"
-             "To choose Hash Table           - press 'E' \n"
-             "To choose Binary Tree          - press 'H' \n"
-             "To choose Priority Queue       - press 'I' \n"
-             "To quit the program            - press 'Q'");
+             "To choose Linked List------------ press 'A' \n"
+             "To choose Double Linked List      press 'B' \n"
+             "To choose Stack ----------------- press 'C' \n"
+             "To choose Queue                   press 'D' \n"
+             "To choose Hash Table ------------ press 'E' \n"
+             "To quit the program               press 'Q'");
 
         choice = getchar();
 
@@ -104,19 +88,7 @@ int interfaceMain(void)
                 else
                 {
                     exit(-1);
-                }
-
-            case 'H':
-                puts("You chose a Binary Tree");
-                flag = false;
-                binaryTreeInterface();
-                break;
-
-            case 'I':
-                puts("You chose a Priority Queue");
-                flag = false;
-                priorityQueueInterface();
-                break;  
+                } 
 
             case 'Q':
                 exit(0);

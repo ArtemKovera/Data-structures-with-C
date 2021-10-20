@@ -8,19 +8,11 @@ int linkedListInterface(void);
 
 int doublyLinkedListInterface(void);
 
-int circularLinkedListInterface(void);
-
 int stackInterface(void);
 
 int queueInterface(void);
 
-int setInterface(void);
-
 int chainedHashTableInterface(void);
-
-int binaryTreeInterface(void);
-
-int priorityQueueInterface(void);
 
 int interfaceMain(void);
 
