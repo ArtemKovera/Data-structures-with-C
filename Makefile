@@ -3,7 +3,7 @@ CC=gcc
 CFLAGS= -Wall
 
 program: main.o interface.o linked_list_interface.o linked_list.o doubly_linked_list_interface.o doubly_linked_list.o stack_interface.o queue_interface.o hash_table_interface.o hash_table.o
-	$(CC) $(CFLAGS) main.o interface.o linked_list_interface.o linked_list.o doubly_linked_list_interface.o doubly_linked_list.o stack_interface.o queue_interface.o hash_table_interface.o hash_table.o -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 main.o: ./src/main.c ./src/interface.h
 	$(CC) $(CFLAGS) ./src/main.c -c
@@ -37,5 +37,3 @@ hash_table_interface.o: ./src/hash_table_interface.c ./src/hash_table.h ./src/in
 
 clean:
 	rm *.o program
-
-
