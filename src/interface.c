@@ -133,9 +133,10 @@ void flushInput(void)
     int ch;
     while (true)
     {
+        ch = getchar(); 
+
         if(ch == EOF || ch == '\n')
             return;
-        
-        ch = getchar();
+    
     }     
 }
