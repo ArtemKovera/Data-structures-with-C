@@ -9,13 +9,16 @@
 int linkedListInterface(void)
 {   
     char choice           = 0;
+    char character        = 0;
     int status            = 0;
+    int count             = 0;
     size_t sizeEntered    = 0;   
     size_t size           = 0; 
     size_t index          = 0;
     char* bufferString    = NULL;
     char* pointer         = NULL;
     char filename [FILE_NAME_SIZE]    = {0};
+    //const char newLine [] = {'\n', '\n'};
 
     
     List* list = init();
@@ -35,7 +38,9 @@ int linkedListInterface(void)
         break;
     }
     size = sizeEntered + 1;
-    bufferString = (char*) malloc(size);
+    if ((bufferString = (char*) calloc(size, 1)) == NULL)
+        return -1;
+
     
     while(true)
     {
@@ -59,8 +64,19 @@ int linkedListInterface(void)
         {
             case'A': //To insert a new string at the head of the list
                 flushInput();
+                count = 0;
                 puts("\nPlease enter the string: ");
-                fgets(bufferString, size, stdin);
+                //fgets(bufferString, size, stdin);
+                while(true)
+                {
+                    character = getchar();
+                    if(character == '\n' || count == sizeEntered)
+                        break;
+
+                    bufferString[count] = character;
+                    count++;
+                }
+                bufferString[count] = '\0';
                 status = insertHead(list, bufferString, size);
                 if(!status)
                     puts("Great! You successfully inserted the element at the head of the list");
